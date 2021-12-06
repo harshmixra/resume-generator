@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>RESGEN</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+</head>
+  </head>
+
+  <body>
+    <!-- RESGEN form  -->
+    <div class="container" id="resgen-form">
+      <h1 class="text-center">RESGEN</h1>
+      <h2 class="text-center">THE RESUME GENRATOR</h2>
+      <p class="text-center">By Harsh Mishra and Aarya verma</p>
+      <!-- bootstrap grid -->
+      <div class="row">
+        <!-- First col -->
+        <div class="col-md-6">
+          <h3 class="text-center">Personal Informations</h3>
+          <!-- name field -->
+          <div class="form-group">
+            <label >ENTER YOUR NAME</label>
+            <input
+              type="text"
+              id="nameField"
+              placeholder="enter here"
+              class="form-control"
+            />
+          </div>
+          <br />
+          <!-- phone no. field -->
+          <div class="form-group">
+            <label for="phoneField">ENTER YOUR PHONE NUMBER</label>
+            <input
+              type="text"
+              id="phoneField"
+              placeholder="enter here"
+              class="form-control"
+            />
+          </div>
+          <br />
+          <!-- email field -->
+          <div class="form-group">
+            <label for="mailField">ENTER YOUR E-MAIL</label>
+            <input
+              type="text"
+              id="mailField"
+              placeholder="enter here"
+              class="form-control"
+            />
+            <!-- address field -->
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="addressField">ENTER YOUR ADDRESS</label>
+            <textarea
+              id="addressField"
+              placeholder="enter here"
+              class="form-control"
+              rows="4"
+            ></textarea>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="">UPLOAD YOUR PHOTO</label>
+            <input id="imgField" type="file" class="form-control">
+          </div>
+          <hr />
+
+          <!-- important links like ig, linkedin etc. -->
+          <h4 class="text-center text-secondary my-2">IMPORTANT LINKS</h4>
+          <br />
+          <div class="form-group">
+            <label for="instaField">YOUR INSTAGRAM</label>
+            <input
+              type="text"
+              id="instaField"
+              placeholder="enter here"
+              class="form-control"
+            />
+          </div>
+
+          <br />
+          <div class="form-group">
+            <label for="linkedinField">YOUR LINKEDIN</label>
+            <input 
+              type="text"
+            
+              id="linkedinField"
+              placeholder="enter here"
+              class="form-control"
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="portfolioField">STUDENT PORTFOLIO /STUDENT BLOG</label>
+            <input
+            
+              type="text"
+              id="portfolioField"
+              placeholder="enter here"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- Second col -->
+        <div class="col-md-6">
+          <h3 class="text-center">Professional Information</h3>
+          <div class="form-group">
+            <label for="skillsField">SKILLS</label>
+            <textarea
+              id="skillsField"
+              placeholder="enter here"
+              class="form-control"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group" id="aq">
+            <label for="aqField">ACADEMIC QUALIFICATION</label>
+            <textarea
+              placeholder="enter here"
+              class="form-control aqField"
+              rows="3"
+            ></textarea>
+            <!-- to add new text area -->
+            <div class="container text-center" id="aqAddButton">
+              <button
+                onclick="addNewAQField()"
+                class="btn btn-primary btn-sm mt-2"
+              >
+                ADD
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group" id="we">
+            <label for="weField">WORK EXPERIENCES</label>
+            <textarea
+              placeholder="enter here"
+              class="form-control weField"
+              rows="3"
+            ></textarea>
+            <div class="container text-center" id="weAddButton">
+              <button
+                onclick="addNewWEField()"
+                class="btn btn-primary btn-small mt-2"
+              >
+                ADD
+              </button>
+            </div>
+          </div>
+          <div class="form-group" id="ec">
+            <label for="ecField">EXTRA CURRICULARS</label>
+            <textarea
+              placeholder="enter here"
+              class="form-control ecField"
+              rows="3"
+            ></textarea>
+            <!-- to add new text area -->
+            <div class="container text-center" id="ecAddButton">
+              <button
+                onclick="addNewECField()"
+                class="btn btn-primary btn-small mt-2"
+              >
+                ADD
+              </button>
+            </div>
+          </div>
+          <div class="form-group" id="pr">
+            <label for="prField">POSITIONS OF RESPOSIBILITY</label>
+            <textarea
+              placeholder="enter here"
+              class="form-control prField"
+              rows="3"
+            ></textarea>
+            <!-- to add new text area -->
+            <div
+              onclick="addNewPRField()"
+              class="container text-center"
+              id="prAddButton"
+            >
+              <button class="btn btn-primary btn-small mt-2">ADD</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="container text-center mt-3">
+        <button onclick="generateResume()" class="btn btn-primary btn-lg">Generate Resume</button>
+      </div>
+    </div>
+
+    <!-- RESUME Template -->
+    <div class="container" id="cv-template">
+      <div class="row">
+        <!-- this is col 1 -->
+        <div class="col-md-4 text-center background">
+          <img id="imgT" src="resegen_default_profile.jpg" class="img-fluid myimg mt-3" />
+          <div class="container text-center">
+            <hr />
+            <h1 id="nameT"
+           style="font-weight: 900">Harsh Mishra</h1>
+            <br />
+            <p id="phoneT">+91770130322, +9192939012</p>
+            <br />
+            <p id="mailT">ahdahdad@gmail.com</p> <br>
+            <p id="addressT">19721972 dummy adreess sector 482009</p>
+            <br />
+            <hr />
+            <p>
+              <a id="instaT" href="">www.fb.com</a>
+            </p>
+            <p>
+              <a id="linkedinT" href="">www.fb.com</a>
+            </p>
+            <p>
+              <a id="portfolioT" href="">www.fb.com</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- this is col 2 -->
+        <div class="col-md-8 text-center ">
+           <!-- SKILLS card -->
+          <div class="card">
+            <div class="card-header background "><h3>SKILLS</h3> </div>
+            <div class="card-body"><p id="skillsT">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur sequi tenetur accusamus nisi? Quia, architecto.</p>
+          </div>
+        </div>
+        <!-- ACADEMIC QUALIFICATION card -->
+        <div class="card">
+          <div class="card-header background"><h3>ACADEMIC QUALIFICATION</h3> </div>
+          <div class="card-body"> 
+            <ul id="aqT">
+              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+            </ul>
+        </div>
+      </div>
+      <!-- WORK EXPERIENCES card -->
+      <div class="card">
+        <div class="card-header background"><h3>WORK EXPERIENCES</h3> </div>
+        <div class="card-body"> 
+          <ul id="weT">
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+          </ul>
+      </div>
+    </div>
+    <!-- EXTRA CURRICULARS card-->
+    <div class="card">
+      <div class="card-header background"><h3>EXTRA CURRICULARS</h3> </div>
+      <div class="card-body"> 
+        <ul id="ecT">
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+        </ul>
+    </div>
+  </div>
+  <!-- POSITIONS OF RESPOSIBILITY card  -->
+  <div class="card">
+    <div class="card-header background"><h3>POSITIONS OF RESPOSIBILITY</h3> </div>
+    <div class="card-body"> 
+      <ul id="porT">
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, minima.</li>
+      </ul>
+  </div>
+</div>
+    
+      </div>
+    </div>
+    <div class="container text-center mt-3">
+      <button onclick="printResume()" value="Export To PDF" class="btn btn-primary btn-lg">PRINT</button>
+    </div>
+    
+    </div>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
